@@ -17,3 +17,8 @@ local.properties
 
 # Logs
 *.log
+
+# Signing
+*.jks
+*.keystore
+keystore.properties
