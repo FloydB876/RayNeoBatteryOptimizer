@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark theme to minimize MicroLED power consumption -->
+    <color name="background">#FF000000</color>
+    <color name="surface">#FF1A1A1A</color>
+    <color name="surface_elevated">#FF2D2D2D</color>
+    <color name="text_primary">#FFE0E0E0</color>
+    <color name="text_secondary">#FF9E9E9E</color>
+
+    <!-- Battery level colors -->
+    <color name="battery_good">#FF4CAF50</color>
+    <color name="battery_medium">#FFFFC107</color>
+    <color name="battery_low">#FFFF9800</color>
+    <color name="battery_critical">#FFF44336</color>
+    <color name="battery_charging">#FF2196F3</color>
+
+    <!-- Profile accent colors -->
+    <color name="profile_performance">#FFFF5722</color>
+    <color name="profile_balanced">#FF4CAF50</color>
+    <color name="profile_saver">#FF2196F3</color>
+    <color name="profile_ultra">#FF9C27B0</color>
+    <color name="profile_nav">#FF00BCD4</color>
+    <color name="profile_record">#FFFF9800</color>
+
+    <!-- Focus indicator -->
+    <color name="focus_ring">#FF00E5FF</color>
+    <color name="focus_ring_dim">#4000E5FF</color>
+
+    <!-- Alert -->
+    <color name="alert_bg">#CCF44336</color>
+</resources>

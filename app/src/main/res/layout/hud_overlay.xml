@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HUD overlay for ONE eye. The HudOverlayManager mirrors this to both eyes.
+     Design principles:
+     - Black background = zero MicroLED power for bg pixels
+     - Minimal text = minimal lit pixels
+     - Positioned at top-right to stay out of main content area
+     - Semi-transparent so it doesn't fully obscure underlying apps -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hudRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#CC000000"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
+
+    <!-- Row 1: Battery % + time remaining -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/hudBatteryPct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--%%"
+            android:textSize="16sp"
+            android:textColor="@color/battery_good"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/hudTimeLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" · --m"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginStart="6dp"/>
+    </LinearLayout>
+
+    <!-- Row 2: Current draw + temp -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/hudCurrentDraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-- mA"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"/>
+
+        <TextView
+            android:id="@+id/hudTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" · --°C"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginStart="6dp"/>
+    </LinearLayout>
+
+    <!-- Row 3: Profile + radio status -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/hudProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BAL"
+            android:textSize="12sp"
+            android:textColor="@color/focus_ring"/>
+
+        <TextView
+            android:id="@+id/hudRadios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" W:- B:- G:-"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginStart="6dp"/>
+
+        <TextView
+            android:id="@+id/hudIdleStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12sp"
+            android:textColor="@color/battery_medium"
+            android:layout_marginStart="6dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <!-- Row 4: Alert (hidden by default) -->
+    <TextView
+        android:id="@+id/hudAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="12sp"
+        android:textColor="@color/battery_critical"
+        android:visibility="gone"/>
+
+</LinearLayout>

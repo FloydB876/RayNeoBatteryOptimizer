@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark background to minimize MicroLED power. Layout is for ONE eye (640x480);
+     BaseMirrorActivity mirrors it automatically to both eyes. -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
+
+    <!-- Alert banner (hidden by default) -->
+    <TextView
+        android:id="@+id/tvAlert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/alert_bg"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+    <!-- Battery status header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvBatteryPct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--%%"
+            android:textSize="36sp"
+            android:textColor="@color/battery_good"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/tvBatteryStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textSize="16sp"
+                android:textColor="@color/text_secondary"/>
+
+            <TextView
+                android:id="@+id/tvTimeRemaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimating..."
+                android:textSize="16sp"
+                android:textColor="@color/text_secondary"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/tvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--°C"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"/>
+
+            <TextView
+                android:id="@+id/tvCurrentDraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-- mA"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Battery bar -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/surface"
+        android:layout_marginBottom="12dp">
+
+        <View
+            android:id="@+id/viewBatteryBar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/battery_good"/>
+    </FrameLayout>
+
+    <!-- Battery health + session stats row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvBatteryHealth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Health: Good"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"/>
+
+        <TextView
+            android:id="@+id/tvVoltage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Voltage: --V"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvDrainRate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Drain: --%%/hr"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="end"/>
+    </LinearLayout>
+
+    <!-- Active profile indicator -->
+    <TextView
+        android:id="@+id/tvActiveProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile: Balanced"
+        android:textSize="18sp"
+        android:textColor="@color/focus_ring"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Quick controls row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/btnWifi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Wi-Fi: ON"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/bg_quick_control"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/btnBluetooth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="BT: ON"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/bg_quick_control"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/btnBrightness"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Bright: 50"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/bg_quick_control"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/btnGps"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="GPS: ?"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/bg_quick_control"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/btnHud"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="HUD: ON"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/bg_quick_control"
+            android:padding="10dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- Profile list label -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profiles (swipe to select, tap to apply)"
+        android:textSize="13sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginBottom="6dp"/>
+
+    <!-- Profile list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProfiles"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"/>
+
+</LinearLayout>
